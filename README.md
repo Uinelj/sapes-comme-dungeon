@@ -1,2 +1,8 @@
 # sapes-comme-dungeon
-jeu réseau cool
+
+Jeu en réseau cool !
+
+TODO
+====
+
+* tout. 
