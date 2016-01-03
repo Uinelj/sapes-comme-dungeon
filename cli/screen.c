@@ -34,8 +34,8 @@ void printMap(Map map){
   }
 }
 
-void printText(char *text){ //TODO STRIP POUR PA QUE CA DEPASS
+void printText(char *text){
   if(text != NULL){
-    printf("\t\033[7m%s\033[0m\n", text);
+    printf("\033[7m%s\033[0m\n", text);
   }
 }
