@@ -25,7 +25,7 @@ int kbhit (void)
   fd_set rdfs;
 
   tv.tv_sec = 0;
-  tv.tv_usec = 0;
+  tv.tv_usec = 100;
 
   FD_ZERO(&rdfs);
   FD_SET (STDIN_FILENO, &rdfs);

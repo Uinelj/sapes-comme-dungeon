@@ -1,3 +1,6 @@
+#ifndef NONBLOCK_H
+#define NONBLOCK_H
+
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
@@ -6,3 +9,5 @@
 
 void changemode(int);
 int  kbhit(void);
+
+#endif
