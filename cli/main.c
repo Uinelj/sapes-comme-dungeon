@@ -49,6 +49,8 @@ connect(s_cli, (struct sockaddr *)&serv_addr, sizeof serv_addr) ;
 
   while(quit==0){
   	recv(s_cli, map, 2000, 0) ;//on reçoit l'état de la map
+    	recv(s_cli, player, 2000, 0) ;//on reçoit l'état de la map
+
   	  render(map, player, dbgstr); // render the map
   	  printf("%dx", map->cells[3][3]);
     input = getInput(); //get user input

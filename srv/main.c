@@ -47,10 +47,12 @@ int main () {
   while (1) { 
  		/*Ici un processus dialogue avec le client */ 
  		send(s_dial, map,2000,0);//envoie de la map aux client 
-    
+    send(s_dial, players[0],2000,0);//envoie de la map aux client 
+
 
  		recv(s_dial, buf, 1, 0) ;
             process(players[0], map, buf[0]);
+
 
  		printf ("%s \n", buf) ;//on reçoit une instruction 
  	}
