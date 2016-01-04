@@ -9,7 +9,8 @@ Map getMap(){
   return map;
 }
 
-Map zeroMap(Map map){
+Map zeroMap(){
+  Map map = malloc(400*sizeof(int)*sizeof(Map));
   int i,j;
   int width = 20;
   int length = 20;
@@ -17,7 +18,7 @@ Map zeroMap(Map map){
   map->id=1;
   for(i=0; i<width; i++){
     for(j=0; j<length; j++){
-      map->cells[i][j] = 0;
+      map->cells[i][j] = 6;
     }
   }
   return map;

@@ -17,17 +17,18 @@ int main(){
   int quit=0;
   char input;
   //Player player = stubPlayer();
-  Map map = malloc(sizeof(Map));
+  Map map = zeroMap();
+  //Map map = zeroMap();
   char dbgstr[10] = "\0";
   Player player = stubPlayer();
-int quit=0;
-char input;
-//Player player = stubPlayer();
-Map map = malloc(sizeof(Map));
-
-Player player = stubPlayer();
-  map->cells[10][10] = 4;
-  player->hp = 14;
+  map->cells[10][10] = 3;
+  map->cells[11][10] = 3;
+  map->cells[12][10] = 3;
+  map->cells[4][7] = 2;
+  map->cells[3][3] = 4;
+  map->cells[1][19] = 4;
+  map->cells[5][10] = 5;
+  player->hp = 10;
 
   render(map, player, "Bienvenue dans Sapés comme Dungeon");
 

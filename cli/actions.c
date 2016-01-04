@@ -24,12 +24,11 @@ void process(Player player, Map map, char input){
 }
 
 void move(Player player, Map map, int dx, int dy){
-
-  map->cells[player->pos[0]][player->pos[1]] = 0;
-  player->pos[0] += dx;
-  player->pos[1] += dy;
-  if(!collision(player, map->cells[player->pos[0]][player->pos[1]])){
-    map->cells[player->pos[0]][player->pos[1]] = 5;
+  if(!collision(player, map->cells[player->pos[0]+dx][player->pos[1]+dy])){
+    map->cells[player->pos[0]][player->pos[1]] = 6;
+    player->pos[0] += dx;
+    player->pos[1] += dy;
+    map->cells[player->pos[0]][player->pos[1]] = 1;
   }
 }
 
@@ -61,6 +60,9 @@ int collision(Player player, int celltype){
       break;
     case 5:
       player->def += 5;
+      break;
+    default:
+      break;
   }
   return celltype<=1;
 }
