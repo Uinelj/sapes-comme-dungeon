@@ -1,3 +1,5 @@
+#ifndef PLAYER_H
+#define PLAYER_H
 typedef struct {
   char name[10];
   int pos[2];
@@ -10,3 +12,5 @@ typedef struct {
 }*Player;
 
 Player stubPlayer();
+
+#endif
