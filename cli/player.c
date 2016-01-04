@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 Player stubPlayer(){
-  Player player = malloc(sizeof(Player));
+  Player player = malloc(sizeof(struct plstruct));
   strcpy(player->name, "foo");
   player->pos[0] = 10;
   player->pos[1] = 5;

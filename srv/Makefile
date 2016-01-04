@@ -1,6 +1,6 @@
 all : serveur
 serveur : ../cli/screen.o ../cli/input.o ../cli/map.o ../cli/player.o ../cli/nonblock.o ../cli/actions.o main.o
-	gcc -o serveur ../cli/screen.o ../cli/input.o ../cli/map.o ../cli/player.o ../cli/nonblock.o ../cli/actions.o main.o
+	gcc -o serveur ../cli/screen.o ../cli/input.o ../cli/map.o ../cli/player.o ../cli/nonblock.o ../cli/actions.o main.o -lpthread
 
 screen.o : ../cli/screen.c ../cli/screen.h
 	gcc -c ../cli/screen.c

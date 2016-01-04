@@ -48,15 +48,16 @@ connect(s_cli, (struct sockaddr *)&serv_addr, sizeof serv_addr) ;
  send(s_cli, player->name, 18,0) ;//move top
 
   while(quit==0){
+
   	recv(s_cli, map, 2000, 0) ;//on reçoit l'état de la map
     	recv(s_cli, player, 2000, 0) ;//on reçoit l'état de la map
+  	    printf("lavie");
 
   	  render(map, player, dbgstr); // render the map
   	  printf("%dx", map->cells[3][3]);
     input = getInput(); //get user input
     //dbgstr[0] = input;
             //process(player, map, buf);
-
   switch(input){
 
 case 'z' :
