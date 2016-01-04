@@ -1,5 +1,14 @@
-#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <termios.h>
+#include <unistd.h>
+#include <sys/time.h>
+
 #include "screen.h"
 #include "input.h"
 #include "actions.h"
@@ -11,26 +20,12 @@ int main(){
   Map map = malloc(sizeof(Map));
   char dbgstr[10] = "\0";
   Player player = stubPlayer();
+int quit=0;
+char input;
+//Player player = stubPlayer();
+Map map = malloc(sizeof(Map));
 
-  //socket init
-
-  /*int s_cli ;
-  struct sockaddr_in serv_addr ;
-  char buf [80] ;
-  s_cli =socket(PF_INET, SOCK_STREAM, 0) ;
-  serv_addr.sin_family = AF_INET ;
-  serv_addr.sin_addr.s_addr = inet_addr("192.168.0.12") ;//adresse de alexis : a changer à la compilation
-  serv_addr.sin_port = htons(5000) ;
-  memset (&serv_addr.sin_zero, 0, sizeof(serv_addr.sin_zero));
-
-  read(s_cli, map->cells, 80) ;
-
-  //init end
-
-  //connect(s_cli, (struct sockaddr *)&serv_addr, sizeof serv_addr) ;
-  */
-
-
+Player player = stubPlayer();
   map->cells[10][10] = 4;
   player->hp = 14;
 
@@ -43,3 +38,9 @@ int main(){
   render(map, player, dbgstr); // render the map
   }
 }
+// int i, j;
+// for(i=0; i<20; i++){
+// for(j=0; j<20; j++){
+// map->cells[i][j] = 0;
+// }
+// }
