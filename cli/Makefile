@@ -24,4 +24,4 @@ main.o : main.c *.h
 	gcc -c main.c
 
 clean :
-	rm file1.o file2.o executable core
+	rm screen.o input.o map.o player.o actions.o nonblock.o main.o client 

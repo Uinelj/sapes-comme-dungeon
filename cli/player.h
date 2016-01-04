@@ -12,5 +12,6 @@ typedef struct {
 }*Player;
 
 Player stubPlayer();
+Player edit_name(Player player, char name[10]);
 
 #endif

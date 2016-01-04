@@ -12,36 +12,73 @@
 #include "screen.h"
 #include "input.h"
 #include "actions.h"
-
+#include "player.h"
 int main(){
+
+	//init socket
+
+	int s_cli ;
+	struct sockaddr_in serv_addr ;
+	char buf [80] ;
+	s_cli =socket(PF_INET, SOCK_STREAM, 0) ;
+	serv_addr.sin_family = AF_INET ;
+	serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1") ;//adresse de alexis : a changer à la compilation
+	serv_addr.sin_port = htons(5000) ;
+	memset (&serv_addr.sin_zero, 0, sizeof(serv_addr.sin_zero));
+
+	//end init
+
   int quit=0;
   char input;
   //Player player = stubPlayer();
-  Map map = zeroMap();
+  Map map = zeroMap(); 
   //Map map = zeroMap();
   char dbgstr[10] = "\0";
   Player player = stubPlayer();
-  map->cells[10][10] = 3;
-  map->cells[11][10] = 3;
-  map->cells[12][10] = 3;
-  map->cells[4][7] = 2;
-  map->cells[3][3] = 4;
-  map->cells[1][19] = 4;
-  map->cells[5][10] = 5;
-  player->hp = 10;
 
-  render(map, player, "Bienvenue dans Sapés comme Dungeon");
+  //demande du nom de joueur
+  char namePlayer[10];
+  printf("écrivez votre pseudo : ");
+  scanf("%s", namePlayer);
+  player = edit_name(player, namePlayer);
+
+
+  //render(map, player, "Bienvenue dans Sapés comme Dungeon");
+connect(s_cli, (struct sockaddr *)&serv_addr, sizeof serv_addr) ;
+ send(s_cli, player->name, 18,0) ;//move top
 
   while(quit==0){
+  	recv(s_cli, map, 2000, 0) ;//on reçoit l'état de la map
+  	  render(map, player, dbgstr); // render the map
+  	  printf("%dx", map->cells[3][3]);
     input = getInput(); //get user input
-    process(player, map, input);
-    dbgstr[0] = input;
-  render(map, player, dbgstr); // render the map
-  }
+    //dbgstr[0] = input;
+            //process(player, map, buf);
+
+  switch(input){
+
+case 'z' :
+send(s_cli, "z", 1,0) ;//move top
+break;
+
+case 's' :
+send(s_cli, "s", 1,0) ;//move down
+break;
+
+case 'd' :
+send(s_cli, "d", 1,0) ;//move right
+break;
+
+case 'q' :
+send(s_cli, "q", 1,0) ;//move left
+break;
+case 'e' :
+quit=1;
+default ://wrong input
+send(s_cli, "0", 1,0) ;
+break;
 }
-// int i, j;
-// for(i=0; i<20; i++){
-// for(j=0; j<20; j++){
-// map->cells[i][j] = 0;
-// }
-// }
+  }
+  close(s_cli) ;
+
+}

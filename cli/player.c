@@ -15,3 +15,8 @@ Player stubPlayer(){
   player->def = 4;
   return player;
 }
+
+Player edit_name(Player player, char name[10]){
+  strcpy(player->name, name);
+  return player;
+}
