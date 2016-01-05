@@ -14,7 +14,9 @@
 #include "actions.h"
 #include "player.h"
 int main(){
-
+	char address[16];
+	printf("Server address: ");
+	scanf("%s", &address);
 	//init socket
 
 	int s_cli ;
@@ -22,7 +24,7 @@ int main(){
 	char buf [80] ;
 	s_cli =socket(PF_INET, SOCK_STREAM, 0) ;
 	serv_addr.sin_family = AF_INET ;
-	serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1") ;//adresse de alexis : a changer à la compilation
+	serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	serv_addr.sin_port = htons(5000) ;
 	memset (&serv_addr.sin_zero, 0, sizeof(serv_addr.sin_zero));
 
